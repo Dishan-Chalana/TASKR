@@ -40,3 +40,10 @@
     transform: scale(0.8);
     background-color: rgb(26, 195, 94);
 }
+
+.todos {
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}

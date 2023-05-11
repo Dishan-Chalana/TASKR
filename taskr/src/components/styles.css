@@ -1,9 +1,12 @@
+
 .input {
     display: flex;
     width: 90%;
     align-items: center;
     position: relative;
-    margin: 3vh 5vw;
+    text-align: center;
+    
+    
 }
 
 .input-box {
@@ -46,4 +49,53 @@
     width: 90%;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+
+.todos-single {
+    display: flex;
+    width: 30%;
+    padding: 20px;
+    background-image: url('../img/todo-item-bg.webp');
+    margin-top: 15px;
+    
+
+}
+
+.todos-single-text {
+    flex:1;
+    padding: 5px;
+    border: none;
+    font-size: 20px;
+}
+
+.icon {
+    margin-left: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+@media(max-width:700px) {
+    .input{
+        width: 95%;
+    }
+
+    .todos {
+        width:95%;
+    }
+
+    .todos-single {
+        width: 100%;
+    }
+
+    .todos-single-text {
+        width: 100%;
+    }
+}
+
+@media(max-width:700px) {
+    .todos-single {
+        width: 40%;
+    }
+
+
 }

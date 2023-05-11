@@ -3,14 +3,12 @@
   height: 100vh;
   align-items: center;
   text-align: center;
-  background-color: rgb(36, 36, 36);
-  
+  background-image: url('./img/bg.webp');
   
   
 }
 
 .heading {
   color: #ffffff;
-  
   font-size: 30px;
 }

@@ -1,7 +1,7 @@
 
 .input {
     display: flex;
-    width: 90%;
+    width: 95%;
     align-items: center;
     position: relative;
     text-align: center;
@@ -46,19 +46,27 @@
 
 .todos {
     display: flex;
-    width: 90%;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    width: 47%;
+    background-color: rgb(27, 225, 47);
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 15px;
+    
 }
 
 .todos-single {
     display: flex;
-    width: 30%;
+    border-radius: 5px;
     padding: 20px;
     background-image: url('../img/todo-item-bg.webp');
     margin-top: 15px;
     
 
+}
+
+.todos-heading {
+    font-size: 20px;
+    font-weight:600;
 }
 
 .todos-single-text {
@@ -68,10 +76,23 @@
     font-size: 20px;
 }
 
+.todo-container {
+    display: flex;
+    width:95%;
+    margin-top: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 .icon {
     margin-left: 10px;
-    font-size: 25px;
+    font-size: 20px;
     cursor: pointer;
+    
+}
+
+.finished {
+    background-color: rgb(217, 211, 23);
 }
 
 @media(max-width:700px) {
@@ -81,11 +102,14 @@
 
     .todos {
         width:95%;
+        margin-bottom: 10px;
+    }
+    .todo-container {
+        width: 95%;
+        flex-direction: column;
     }
 
-    .todos-single {
-        width: 100%;
-    }
+   
 
     .todos-single-text {
         width: 100%;
@@ -94,8 +118,14 @@
 
 @media(max-width:700px) {
     .todos-single {
-        width: 40%;
+        width: 80%;
     }
 
 
+}
+
+@media(max-width:1100px) {
+    .todos {
+        width: 45%;
+    }
 }

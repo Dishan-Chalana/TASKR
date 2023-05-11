@@ -13,46 +13,52 @@ interface Props {
     setcompleatedTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
-const TodoList: React.FC<Props> = ({ todos, setTodos }: Props) => {
+const TodoList: React.FC<Props> = ({ todos, setTodos,compleatedTodos,setcompleatedTodos }: Props) => {
     return (
 
         <div className='todo-container'>
             {/* dropable zone */}
-            <Droppable droppableId='TodosList'> 
+            <Droppable droppableId='TodosList'>
                 {
                     (provided) => (
                         // active todo section
                         <div className='todos' ref={provided.innerRef} {...provided.droppableProps}>
                             <span className="todos-heading"> Active tasks </span>
-                            {todos.map((todo) => (
-                            <SingleTodo
-                                todo={todo}
-                                todos={todos}
-                                key={todo.id}
-                                setTodos={setTodos}
-                             />
+                            {todos.map((todo,index) => (
+                                <SingleTodo
+                                    index={index}
+                                    todo={todo}
+                                    todos={todos}
+                                    key={todo.id}
+                                    setTodos={setTodos}
+                                />
                             ))}
+                            {/* to provide space draggged tasks in compleated zone */}
+                            {provided.placeholder}
                         </div>
 
-                )}
+                    )}
             </Droppable >
 
+            <Droppable droppableId='TodosList-finished'>
+                {
+                    (provided) => (
+                        < div className='todos finished' ref={provided.innerRef} {...provided.droppableProps} >
+                            <span className="todos-heading"> Completed tasks </span>
+                            {compleatedTodos.map((todo, index) => (
+                                <SingleTodo
+                                    index={index}
+                                    todo={todo}
+                                    todos={compleatedTodos}
+                                    key={todo.id}
+                                    setTodos={setcompleatedTodos} />
+                            ))}
+                            {provided.placeholder}
 
-    
-    < div className = 'todos finished' >
-        <span className="todos-heading">
-            Completed tasks
-        </span>
-{
-    todos.map((todo) => (
-        <SingleTodo
-            todo={todo}
-            todos={todos}
-            key={todo.id}
-            setTodos={setTodos} />
-    ))
-}
-            </ >
+                        </div>
+                    )}
+            </Droppable>
+
         </div >
     )
 }

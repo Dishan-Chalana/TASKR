@@ -3,7 +3,7 @@ import './App.css';
 import InputField from './components/InputField';
 import { Todo } from './model';
 import TodoList from './components/TodoList';
-import{ DragDropContext } from 'react-beautiful-dnd'
+import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
 
 
@@ -27,9 +27,38 @@ const App: React.FC = () => {
 
   console.log(todos);
 
+  const onDragEnd = (result: DropResult) => {
+    const { source, destination } = result;
+
+    if (!destination) return; //if desitination is null do nothing
+
+    if ( //if destination and source is same do nothing
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) return;
+
+    let add,
+      active = todos,
+      complete = compleatedTodos;
+
+    //remove from source
+    if (source.droppableId === 'TodoList') {
+      add = active[source.index];
+      active.splice(source.index, 1); //if came from TodoList remove from Todolist
+    } else {
+      add = complete[source.index]; //if came from Compleated remove from compleated
+      complete.splice(source.index, 1);
+    }
+
+
+
+    setcompleatedTodos(complete);
+    setTodos(active);
+
+  }
 
   return (
-    <DragDropContext onDragEnd={()=>{}}>
+    <DragDropContext onDragEnd={onDragEnd}>
       <div className="App">
         <span className='heading'> Taskr</span>
         <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />

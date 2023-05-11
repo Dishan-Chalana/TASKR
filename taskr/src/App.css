@@ -4,6 +4,7 @@
   align-items: center;
   text-align: center;
   background-image: url('./img/bg.webp');
+  background-size: cover;
   
   
 }
